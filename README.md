@@ -1,16 +1,5 @@
-# schedule_manager
+네이버에 제휴제안서 보내야함..
 
-A new Flutter project.
+개인은 승인받기 어렵기 때문에 추후에 디자인하고 보낼 예정.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+일단 프로젝트는 여기까지 하고, 다음에는 제휴제안서를 작성해야함!
