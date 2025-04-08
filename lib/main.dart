@@ -1,38 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'auth/auth_provider.dart';
 import 'auth/login_page.dart';
 import 'home/home_page.dart';
 
 void main() {
-  runApp(const ScheduleManagerApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => AuthProvider()..checkAutoLogin(),
+      child: const ScheduleManagerApp(),
+    ),
+  );
 }
 
-class ScheduleManagerApp extends StatefulWidget {
+class ScheduleManagerApp extends StatelessWidget {
   const ScheduleManagerApp({super.key});
 
   @override
-  State<ScheduleManagerApp> createState() => _ScheduleManagerAppState();
-}
-
-class _ScheduleManagerAppState extends State<ScheduleManagerApp> {
-  bool isLoggedIn = false;
-
-  void onLoginSuccess() {
-    setState(() {
-      isLoggedIn = true;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Schedule Manager',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
-      ),
-      home: isLoggedIn
-          ? const HomePage()
-          : LoginPage(onLoginSuccess: onLoginSuccess),
+    return Consumer<AuthProvider>(
+      builder: (context, auth, _) {
+        return MaterialApp(
+          title: 'Schedule Manager',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+            useMaterial3: true,
+          ),
+          home: auth.user != null ? const HomePage() : const LoginPage(),
+        );
+      },
     );
   }
 }
